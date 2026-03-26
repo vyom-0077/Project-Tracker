@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-0 text-gray-100 font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a35;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a47;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-2 border border-white/5 rounded-xl;
+  }
+
+  .btn {
+    @apply px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer select-none;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-400 hover:text-gray-100 hover:bg-white/5;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent-blue/20 text-accent-blue border border-accent-blue/30 hover:bg-accent-blue/30;
+  }
+}
+
+/* Drag and drop styles */
+.drag-card {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.drag-over-column {
+  background-color: rgba(79, 142, 247, 0.06) !important;
+  border-color: rgba(79, 142, 247, 0.3) !important;
+}
+
+.drag-placeholder {
+  border: 2px dashed rgba(79, 142, 247, 0.3);
+  border-radius: 10px;
+  background: rgba(79, 142, 247, 0.04);
+  pointer-events: none;
+}
+
+.snap-back {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Collaboration indicator pulse */
+@keyframes collab-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; }
+  50% { box-shadow: 0 0 0 3px transparent; }
+}
+
+.collab-indicator {
+  animation: collab-pulse 2s ease-in-out infinite;
+}
+
+/* Timeline scroll */
+.timeline-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Virtual scroll container */
+.virtual-scroll-container {
+  overflow-y: auto;
+  position: relative;
+}
